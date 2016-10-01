@@ -1,2 +1,5 @@
 # func-prog-hask
-https://www.futurelearn.com/courses/functional-programming-haskell
+
+Working through [Functional Programming in Haskell (University of
+Glasgow)](https://www.futurelearn.com/courses/functional-programming-haskell)
+exercises.
