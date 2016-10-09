@@ -7,7 +7,7 @@ countSplitInv l left_length r (acc,n)
   | otherwise = case (l,r) of
                   (x:xs,y:ys) -> if x > y
                                  then countSplitInv l left_length ys (acc ++ [y], n+left_length)
-                                 else countSplitInv xs left_length r (acc ++ [x], n)
+                                 else countSplitInv xs (left_length-1) r (acc ++ [x], n)
 
 inversions :: (Ord a) => ([a], Int) -> ([a], Int)
 inversions (a,n)
