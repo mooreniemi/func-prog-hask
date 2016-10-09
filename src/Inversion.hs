@@ -10,6 +10,7 @@ countSplitInv l left_length r (acc,n)
                                  else countSplitInv xs (left_length-1) r (x:acc, n)
 
 inversions :: (Ord a) => ([a], Int) -> ([a], Int)
+inversions ([], 0) = ([], 0)
 inversions (a,n)
   | n == 1 = (a,0)
   | otherwise = (d, x+y+z)

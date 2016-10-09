@@ -13,12 +13,19 @@ main = hspec spec
 spec :: Spec
 spec = do
   describe "inversions" $ do
+    it "handles empty arrays" $ do
+      inversions ([] :: [Integer], 0) `shouldBe` ([], 0)
     it "for total reversed sort order reverses list and count n choose k" $ do
       inversions ([2,1], 2) `shouldBe` ([1,2], 1)
       inversions ([3,2,1], 3) `shouldBe` ([1,2,3], 3)
       inversions ([5,4,3,2,1], 5) `shouldBe` ([1,2,3,4,5], 10)
       inversions ([6,5,4,3,2,1], 6) `shouldBe` ([1,2,3,4,5,6], 15)
       inversions ([10000,9999..1], 10000) `shouldBe` ([1,2..10000], 49995000)
+    context "property test on NonNegative ints" $ do
+      it "for total reversed sort order reverses list and count n choose k" $ property $
+        \(NonNegative n) -> n < 100000 ==>
+                            let xs = [n,n-1..1]
+                            in inversions (xs, n) === ([1..n], n * (n-1) `div` 2)
     it "passes SO examples" $ do
       inversions ([3,1,2], 3) `shouldBe` ([1,2,3], 2)
       inversions ([3,5,1,2], 4) `shouldBe` ([1,2,3,5], 4)
