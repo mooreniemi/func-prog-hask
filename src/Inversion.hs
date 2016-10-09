@@ -16,6 +16,7 @@ inversions (a,n)
   where
     left_length = n `div` 2
     right_length = n - left_length
-    (b,x) = inversions (fst $ splitAt left_length a, left_length)
-    (c,y) = inversions (snd $ splitAt left_length a, right_length)
+    (l,r) = splitAt left_length a
+    (b,x) = inversions (l, left_length)
+    (c,y) = inversions (r, right_length)
     (d,z) = countSplitInv b left_length c ([],0)
