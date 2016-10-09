@@ -3,11 +3,11 @@ module Inversion where
 
 countSplitInv :: (Ord a) => [a] -> Int -> [a] -> ([a], Int) -> ([a], Int)
 countSplitInv l left_length r (acc,n)
-  | null l || null r = (acc ++ l ++ r, n)
+  | null l || null r = ((reverse acc) ++ l ++ r, n)
   | otherwise = case (l,r) of
                   (x:xs,y:ys) -> if x > y
-                                 then countSplitInv l left_length ys (acc ++ [y], n+left_length)
-                                 else countSplitInv xs (left_length-1) r (acc ++ [x], n)
+                                 then countSplitInv l left_length ys (y:acc, n+left_length)
+                                 else countSplitInv xs (left_length-1) r (x:acc, n)
 
 inversions :: (Ord a) => ([a], Int) -> ([a], Int)
 inversions (a,n)
