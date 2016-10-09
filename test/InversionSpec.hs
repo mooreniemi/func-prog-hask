@@ -19,8 +19,8 @@ spec = do
       inversions ([6,5,4,3,2,1], 6) `shouldBe` ([1,2,3,4,5,6], 15)
       inversions ([10000,9999..1], 10000) `shouldBe` ([1,2..10000], 49995000)
     it "passes SO examples" $ do
-      inversions ([3,1,2], 3) `shouldBe` ([1,2,3],2)
-      inversions ([3,5,1,2], 4) `shouldBe` ([1,2,3,5],4)
-      inversions ([3,5,1,2,4], 5) `shouldBe` ([1,2,3,4,5],5)
-      inversions ([4,1,3,2,9,5], 6) `shouldBe` ([1,2,3,4,5,9],5)
-      inversions ([3,4,6,1,2,5], 6) `shouldBe` ([1,2..6],7)
+      inversions ([3,1,2], 3) `shouldBe` ([1,2,3], 2)
+      inversions ([3,5,1,2], 4) `shouldBe` ([1,2,3,5], 4)
+      inversions ([3,5,1,2,4], 5) `shouldBe` ([1,2,3,4,5], 5)
+      inversions ([4,1,3,2,9,5], 6) `shouldBe` ([1,2,3,4,5,9], 5)
+      inversions ([3,4,6,1,2,5], 6) `shouldBe` ([1,2..6], 7)
