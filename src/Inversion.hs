@@ -5,16 +5,16 @@ import Data.Foldable as F
 
 countSplitInv :: (Ord a) => S.Seq a -> S.Seq a -> (S.Seq a, Int) -> (S.Seq a, Int)
 countSplitInv l r (acc,n)
-  | otherwise = case (viewl l, viewl r) of
-                  (EmptyL,_) -> (acc >< r, n)
-                  (_,EmptyL) -> (acc >< l, n)
-                  (x:<xs,y:<ys) -> if x > y
-                                 then countSplitInv l ys (acc|>y, n + S.length l)
-                                 else countSplitInv xs r (acc|>x, n)
+  = case (viewl l, viewl r) of
+    (EmptyL,_) -> (acc >< r, n)
+    (_,EmptyL) -> (acc >< l, n)
+    (x:<xs,y:<ys) -> if x > y
+      then countSplitInv l ys (acc|>y, n + S.length l)
+      else countSplitInv xs r (acc|>x, n)
 
 inversions' :: (Ord a) => S.Seq a -> (S.Seq a, Int)
 inversions' a
-  | n <= 1 = (a,0)
+  | n <= 1 = (a, 0)
   | otherwise = (d, x+y+z)
   where
     n = S.length a
