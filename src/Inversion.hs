@@ -19,7 +19,6 @@ inversions' a
   where
     n = S.length a
     left_length = n `div` 2
-    right_length = n - left_length
     (l,r) = S.splitAt left_length a
     (b,x) = inversions' l
     (c,y) = inversions' r
