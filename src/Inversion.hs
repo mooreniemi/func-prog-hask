@@ -18,8 +18,7 @@ inversions' a
   | otherwise = (d, x+y+z)
   where
     n = S.length a
-    left_length = n `div` 2
-    (l,r) = S.splitAt left_length a
+    (l,r) = S.splitAt (n `div` 2) a
     (b,x) = inversions' l
     (c,y) = inversions' r
     (d,z) = countSplitInv b c (S.empty,0)
