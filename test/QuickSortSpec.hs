@@ -13,6 +13,13 @@ main = hspec spec
 
 spec :: Spec
 spec = do
+  describe "partition" $ do
+    it "single element is vacuously parititioned" $ do
+      partition'(S.fromList([3])) `shouldBe` S.fromList([3])
+    it "returns seq when seen boundary exceeds length" $ do
+      partition'(S.fromList([3,2])) `shouldBe` S.fromList([2,3])
+    it "otherwise continues scanning" $ do
+      partition'(S.fromList([3,2,1])) `shouldBe` S.fromList([2,1,3])
   describe "quicksort" $ do
     it "handles empty sequences" $ do
       let emptyIntSeq = S.fromList([] :: [Integer])
