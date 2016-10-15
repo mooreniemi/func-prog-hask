@@ -2,14 +2,16 @@ module QuickSort where
 import Data.Sequence as S
 import Data.Foldable as F
 
+-- moves pivot element into correct position
 partition' :: (Ord a) => S.Seq a -> S.Seq a
 partition' seq = (firstHalf|>pivot)><secondHalf
   where
-    (_, position) = partitioner seq 0 0
     pivot = S.index seq 0
+    (_, position) = partitioner seq 0 0
     (_, rest) = S.splitAt 1 seq
     (firstHalf, secondHalf) = S.splitAt position rest
 
+-- tells you where the pivot element's final position should be
 partitioner :: (Ord a) => S.Seq a -> Int -> Int -> (S.Seq a, Int)
 partitioner a i j
   | n <= 1 = (a, 0)
